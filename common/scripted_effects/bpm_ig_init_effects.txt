@@ -219,12 +219,6 @@ bpm_initialize_natlibs = {
 				add_ideology = ideology_cit_liberal_nationalist
 			}
 			else = { add_ideology = ideology_cit_nationalist }
-			if = {
-				limit = {
-					ROOT = c:USA
-				}
-				add_ideology = ideology_rel_secularist
-			}
 			else_if = {
 				limit = {
 					ROOT = { bpm_country_is_latin_american = yes }
@@ -240,12 +234,6 @@ bpm_initialize_natlibs = {
 				set_interest_group_name = ig_positivists
 			}
 			else = { add_ideology = ideology_wel_paternalistic_welfare }
-			if = {
-				limit = {
-					ROOT = c:USA
-				}
-				add_ideology = ideology_eco_laissez_faire
-			}
 			else = { add_ideology = ideology_eco_interventionist }
 			if = {
 				limit = { ROOT = { bpm_country_is_latin_american = yes } }
@@ -312,12 +300,6 @@ bpm_initialize_marlibs = {
 			else = { add_ideology = ideology_gov_moderate_monarchist }
 			# America Marlib
 			if = {
-				limit = { 
-					OR = {
-						ROOT = { bpm_country_is_latin_american = yes }
-						ROOT = c:USA
-					}
-				}
 				add_ideology = ideology_dop_moderate_democrat
 				add_ideology = ideology_sta_federated_state
 			}
@@ -338,10 +320,6 @@ bpm_initialize_marlibs = {
 			}
 			else = {
 				add_ideology = ideology_cit_liberal_nationalist
-			}
-			if = {
-				limit = { ROOT = c:USA }
-				add_ideology = ideology_rel_secularist
 			}
 			else = {
 				add_ideology = ideology_rel_moralist
@@ -415,23 +393,7 @@ bpm_initialize_fascists = {
 				}
 				add_ideology = ideology_dop_organic_power
 			}
-			else_if = {
-				limit = {
-					ROOT = c:CLM
-				}
-				add_ideology = ideology_dop_authoritarian_democrat
-			}
 			else = { add_ideology = ideology_dop_party_state }
-			if = {
-				limit = {
-					OR = {
-						ROOT = { country_has_primary_culture = cu:brazilian	}	
-						ROOT = c:CLM
-					}
-				}
-				add_ideology = ideology_sta_organic_state
-				add_ideology = ideology_cit_multiethnic_nationalist
-			}
 			else = { 
 				add_ideology = ideology_sta_security_state
 				add_ideology = ideology_cit_ethnonationalist
@@ -497,12 +459,6 @@ bpm_initialize_patcons = {
 			}
 			bpm_remove_all_eco_ideologies = yes
 			bpm_remove_all_wel_ideologies = yes
-			if = {
-				limit = { ROOT = c:USA }
-				add_ideology = ideology_eco_laissez_faire
-				bpm_remove_all_cit_ideologies = yes
-				add_ideology = ideology_cit_segregationist
-			}
 			else_if = {
 				limit = { ROOT = { country_has_primary_culture = cu:brazilian } }
 				add_ideology = ideology_eco_modern_agrarian
@@ -533,14 +489,6 @@ bpm_initialize_patcons = {
 			else = {
 				bpm_remove_all_wel_ideologies = yes
 				add_ideology = ideology_wel_religious_welfare
-			}
-
-			if = {
-				limit = {
-					owner = c:USA
-				}
-				bpm_remove_all_sta_ideologies = yes
-				add_ideology = ideology_sta_security_state
 			}
 			else_if = {
 				limit = { ROOT = { country_has_primary_culture = cu:brazilian } }

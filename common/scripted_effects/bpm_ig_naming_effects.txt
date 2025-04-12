@@ -198,10 +198,6 @@ bpm_rename_refsoc_ig = {
 		limit = { country_has_primary_culture = cu:french }
 		ig:ig_reformist_socialists ?= { set_interest_group_name = ig_possibilists }
 	}
-	else_if = {
-		limit = { this = c:GBR }
-		ig:ig_reformist_socialists ?= { set_interest_group_name = ig_fabian_socialists }
-	}
 	else = {
 		ig:ig_reformist_socialists ?= { set_interest_group_name = ig_reformist_socialists }
 	}
@@ -309,20 +305,6 @@ bpm_rename_radlib_ig = {
 		ig:ig_radicals ?= { set_interest_group_name = ig_social_liberals }
 	}
 	else_if = {
-		limit = {
-			this = c:BRZ
-			has_law = law_type:law_monarchy
-		}
-		ig:ig_radicals ?= { set_interest_group_name = ig_farroupilhas }
-	}
-	else_if ={
-		limit = {
-			this = c:PRG
-			ig:ig_radicals ?= { bpm_ig_is_anti_democratic = yes }
-		}
-		ig:ig_radicals ?= { set_interest_group_name = ig_despotic_utopians }
-	}
-	else_if = {
 		limit = { has_variable = radicals_renamed_var }
 		if = {
 			limit = {
@@ -367,68 +349,6 @@ bpm_rename_liberal_ig = {
 	}
 	else_if = {
 		limit = {
-			this = c:BRZ
-			has_law = law_type:law_monarchy
-		}
-		ig:ig_liberals ?= { set_interest_group_name = ig_chimangos }
-	}
-	else_if = {
-		limit = {
-			this = c:USA
-		}
-		if = {
-			limit = {
-				has_variable = bpm_2nd_party_system
-				NOT = { has_global_variable = american_civil_war }
-				NOT = { has_law = law_type:law_slavery_banned }
-				OR = {
-					game_date <= 1836.1.1
-					ig:ig_liberals ?= {
-						has_party = yes
-						party = { is_party_type = conservative_party }
-					}
-				}
-			}
-			ig:ig_liberals ?= { set_interest_group_name = ig_jacksonians }
-		}
-		else_if = {
-			limit = {
-				has_variable = bpm_2nd_party_system
-				NOT = { has_global_variable = american_civil_war }
-				NOT = { has_law = law_type:law_slavery_banned }
-				ig:ig_liberals ?= {
-					has_party = yes
-					party = { is_party_type = agrarian_party }
-				}
-			}
-			ig:ig_liberals ?= { set_interest_group_name = ig_barnburners }
-		}
-		else_if = {
-			limit = {
-				has_variable = bpm_2nd_party_system
-				NOT = { has_global_variable = american_civil_war }
-				NOT = { has_law = law_type:law_slavery_banned }
-			}
-			ig:ig_liberals ?= { set_interest_group_name = ig_jacksonian_liberals }
-		}
-		else_if = {
-			limit = {
-				OR = {
-					NOT = { has_global_variable = american_civil_war }
-					ig:ig_liberals ?= {
-						has_party = yes
-						party = { is_party_type = liberal_party }
-					}
-				}
-			}
-			ig:ig_liberals ?= { set_interest_group_name = ig_moderate_republicans }
-		}
-		else = {
-			ig:ig_liberals ?= { set_interest_group_name = ig_moderate_liberals }
-		}
-	}
-	else_if = {
-		limit = {
 			OR = {
 				ig:ig_national_liberals ?= { bpm_ig_enabled = yes }
 				ig:ig_market_liberals ?= { bpm_ig_enabled = yes }
@@ -460,23 +380,6 @@ bpm_rename_natlib_ig = {
 		ig:ig_national_liberals ?= { set_interest_group_name = ig_bonapartists }
 	}
 	else_if = {
-		limit = { this = c:USA }
-		if = {
-			limit = {
-				ig:ig_national_liberals ?= {
-					has_party = yes
-					party = {
-						is_party_type = conservative_party
-					}
-				}
-			}
-			ig:ig_national_liberals ?= { set_interest_group_name = ig_war_democrats }
-		}
-		else = {
-			ig:ig_national_liberals ?= { set_interest_group_name = ig_national_liberals }
-		}
-	}
-	else_if = {
 		limit = { bpm_country_is_latin_american = yes }
 		ig:ig_national_liberals ?= { set_interest_group_name = ig_positivists }
 	}
@@ -493,23 +396,6 @@ bpm_rename_marlib_ig = {
 		}
 		ig:ig_market_liberals ?= { set_interest_group_name = ig_young_americans }
 	}
-	else_if = {
-		limit = { this = c:USA }
-		if = {
-			limit = {
-				ig:ig_market_liberals ?= {
-					has_party = yes
-					party = {
-						is_party_type = conservative_party
-					}
-				}
-			}
-			ig:ig_market_liberals ?= { set_interest_group_name = ig_bourbon_democrats }
-		}
-		else = {
-			ig:ig_market_liberals ?= { set_interest_group_name = ig_bourbon_liberals }
-		}
-	}
 	else = {
 		ig:ig_market_liberals ?= { set_interest_group_name = ig_market_liberals }
 	}
@@ -517,13 +403,6 @@ bpm_rename_marlib_ig = {
 
 bpm_rename_conservative_ig = {
 	if = {
-		limit = {
-			this = c:BRZ
-			has_law = law_type:law_monarchy
-		}
-		ig:ig_conservatives ?= { set_interest_group_name = ig_saquaremas }
-	}
-	else_if = {
 		limit = { ig:ig_conservatives ?= { 
 			#has_ideology = ideology:ideology_wel_paternalistic_welfare 
 			bpm_ig_is_paternalistic = yes 
@@ -554,22 +433,6 @@ bpm_rename_conservative_ig = {
 		}
 		ig:ig_conservatives ?= { set_interest_group_name = ig_slavophiles_moderate }
 	}
-	else_if = { 
-		limit = {
-			this = c:USA
-			has_variable = bpm_2nd_party_system
-			OR = {
-				game_date <= 1836.1.1
-				ig:ig_conservatives ?= {
-					has_party = yes
-					party = {
-						is_party_type = liberal_party
-					}
-				}
-			}
-		}
-		ig:ig_conservatives ?= { set_interest_group_name = ig_cotton_whigs }
-	}
 	else_if = {
 		limit = {
 			bpm_country_is_pre_constitutional = yes
@@ -596,70 +459,10 @@ bpm_rename_reactionary_ig = {
 	}
 	else_if = {
 		limit = {
-			this = c:SPA
-		}
-		ig:ig_reactionaries ?= { set_interest_group_name = ig_carlists }
-	}
-	else_if = {
-		limit = {
-			this = c:POR
-			ig:ig_reactionaries ?= { NOT = { has_ideology = ideology:ideology_sta_organic_state } }
-		}
-		ig:ig_reactionaries ?= { set_interest_group_name = ig_miguelists }
-	}
-	else_if = {
-		limit = {
 			this = c:RUS
 			NOT = { has_variable = bpm_je_zapadniks_and_slavophiles_over }
 		}
 		ig:ig_reactionaries ?= { set_interest_group_name = ig_slavophiles }
-	}
-	else_if = {
-		limit = { this = c:USA }
-		if = {
-			limit = {
-				OR = {
-					game_date <= 1836.1.1
-					AND = {
-						has_variable = bpm_2nd_party_system
-						ig:ig_reactionaries ?= { leader = { has_variable = is_calhoun }}		
-					}
-				}
-			}
-			ig:ig_reactionaries ?= { set_interest_group_name = ig_calhounites }
-		}
-		else_if = {
-			limit = {
-				OR = {
-					NOT = { has_global_variable = american_civil_war }
-					ig:ig_reactionaries ?= {
-						has_party = yes
-						party = {
-							is_party_type = conservative_party
-						}
-					}
-				}
-			}
-			ig:ig_reactionaries ?= { set_interest_group_name = ig_southern_democrats }
-		}
-		else = {
-			ig:ig_reactionaries ?= { set_interest_group_name = ig_southern_conservatives }
-		}
-	}
-	else_if = {
-		limit = {
-			this = c:BRZ
-			ig:ig_reactionaries ?= { has_ideology = ideology:ideology_sta_organic_state }
-		}
-		ig:ig_reactionaries ?= { set_interest_group_name = ig_patrianovists }
-	}
-	else_if = {
-		limit = {
-			this = c:BRZ
-			has_law = law_type:law_monarchy
-			ig:ig_reactionaries ?= { NOT = { has_ideology = ideology:ideology_sta_organic_state } }
-		}
-		ig:ig_reactionaries ?= { set_interest_group_name = ig_caramurus }
 	}
 	else_if = {
 		limit = {
