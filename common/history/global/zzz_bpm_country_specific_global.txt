@@ -8,7 +8,6 @@
 			OR = {
 				this = c:FLA
 				this = c:NET
-				#this = c:
 				country_has_primary_culture = cu:boer
 				AND = {
 					bpm_country_is_in_new_world = yes
@@ -27,14 +26,9 @@
 		limit = {
 			OR = {
 				this = c:BYZ
-				this = c:MEX
-				this = c:KRA
 				this = c:SWE
 				this = c:NOR
 				this = c:DEN
-				this = c:GRE
-				this = c:POR
-				this = c:EGY
 				this = c:KOR
 				country_has_primary_culture = cu:north_german
 				country_has_primary_culture = cu:south_german
@@ -51,10 +45,7 @@
 	every_country = {
 		limit = {
 			OR = {
-				this = c:SWI
-				this = c:ARG
 				this = c:JAP
-				this = c:SOK
 			}
 		}
 		activate_law = law_type:law_confederated
@@ -68,7 +59,6 @@
 		limit = {
 			OR = {
 				this = c:HRE
-				#this = c:AUS
 			}
 		}
 		activate_law = law_type:law_devolved
@@ -106,7 +96,6 @@
 			OR = {
 				this = c:PRU
 				this = c:SAX
-				#this = c:ANL
 				bpm_country_is_latin_american = true
 			}
 			NOT = { has_law = law_type:law_peasant_levies }
@@ -139,7 +128,6 @@
 		if = {
 			limit = {
 				ig:ig_reactionaries = { has_ideology = ideology:ideology_mil_aristocratic_militarist }
-				NOT = { this = c:FRA }
 			}
 			ig:ig_reactionaries = { 
 				bpm_remove_all_mil_ideologies = yes
@@ -159,7 +147,7 @@
 
 	every_country = {
 		if = {
-			limit = { this = c:LOM }
+			limit = { this = c:TUS }
 			activate_law = law_type:law_protected_speech
 		}
 		else_if = {
